@@ -17,7 +17,6 @@
     };
 
     enableCompletion = true;
-    syntaxHighlighting.enable = true;
     enableAutosuggestions = true;
 
     plugins = [
@@ -32,5 +31,11 @@
         file = "p10k.zsh";
       }
     ];
-  };
+  } // (
+    if (config.home.stateVersion == "23.05") then {
+      enableSyntaxHighlighting = true;
+    } else {
+      syntaxHighlighting.enable = true;
+    }
+  );
 }

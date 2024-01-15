@@ -16,11 +16,36 @@
     userName = "Auguste Charpentier";
     userEmail = "laggron42@gmail.com";
 
+    extraConfig = {
+      commit.verbose = true;
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+      };
+      push.default = "simple";
+    };
+
     aliases = {
       advlog = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
+      atag = "tag --annotate -m \"\"";
     };
 
     lfs.enable = true;
     diff-so-fancy.enable = true;
+
+    includes = [
+      {
+        condition = "hasconfig:remote.*.url:*epita.fr:**/**";
+        contents = {
+          user.email = "auguste.charpentier@epita.fr";
+        };
+      }
+      {
+        condition = "hasconfig:remote.*.url:*gitlab.com:prologin/**/**";
+        contents = {
+          user.email = "auguste.charpentier@prologin.org";
+        };
+      }
+    ];
   };
 }

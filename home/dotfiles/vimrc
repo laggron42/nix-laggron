@@ -1,4 +1,14 @@
-" https://gist.github.com/laggron42/187570f694da4ae10eb3e5db6cf98205
+" Laggron's vim configuration
+"
+" This vim config relies on a list of plugins being installed,
+" which is handled by nix and home-manager. Copying this file
+" will not work out of the box.
+"
+" You must ensure the packages listed in vim.nix are installed
+" and available for vim.
+" For reference, you can read my old vimrc which used Vundle
+" to install plugins:
+" https://gist.github.com/laggron42/187570f694da4ae10eb3e5db6cf98205#file-vimrc-L4-L13
 
 set nocompatible
 

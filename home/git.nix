@@ -22,7 +22,12 @@
         autoSquash = true;
         autoStash = true;
       };
-      push.default = "simple";
+      push = {
+        default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      branch.autoSetupRebase = "always";
     };
 
     aliases = {

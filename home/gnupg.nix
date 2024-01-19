@@ -10,6 +10,14 @@
     ssh = {
       enable = true;
       forwardAgent = true;
+      matchBlocks = {
+        "ssh.cri.epita.fr" = {
+          extraOptions = {
+            GSSAPIAuthentication = "yes";
+            GSSAPIDelegateCredentials = "yes";
+          };
+        };
+      };
     };
 
     gpg = {

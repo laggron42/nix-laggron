@@ -6,12 +6,6 @@
     yubikey-manager
   ];
 
-  # SSH_AUTH_SOCK might be already set and should be overwritten
-  # gpg-agent.nix does not override SSH_AUTH_SOCK, so we unset it
-  home.sessionVariablesExtra = ''
-    unset SSH_AUTH_SOCK
-  '';
-
   programs = {
     ssh = {
       enable = true;

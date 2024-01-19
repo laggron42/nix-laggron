@@ -178,6 +178,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " ===== Language specific =====
 
+" enable doxygen automatically
+let g:load_doxygen_syntax = 1
+let g:doxygen_enhanced_color = 1
+
 " recognize anything in my .Postponed directory as a news article, and anything
 " at all with a .txt extension as being human-language text [this clobbers the
 " `help' filetype, but that doesn't seem to prevent help from working

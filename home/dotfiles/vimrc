@@ -74,6 +74,19 @@ set t_vb=
 
 set splitright  " vert split goes right of screen instead of left
 
+" shortcut to go to normal mode in terminal
+tnoremap <c-b> <c-\><c-n>
+
+" quickly switch to a tab number
+nnoremap <Esc>1 1gt
+nnoremap <Esc>2 2gt
+nnoremap <Esc>3 3gt
+nnoremap <Esc>4 4gt
+nnoremap <Esc>5 5gt
+nnoremap <Esc>6 6gt
+nnoremap <Esc>7 7gt
+nnoremap <Esc>8 8gt
+nnoremap <Esc>9 9gt
 
 " ===== Theme & colors =====
 

@@ -188,4 +188,10 @@
       };
     };
   };
+
+  # binds to tray.target by default, but this target is never active
+  # setting it to graphical-session ensures it is started by home-manager
+  systemd.user.services.polybar = {
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
 }

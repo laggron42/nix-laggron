@@ -11,6 +11,7 @@
 " https://gist.github.com/laggron42/187570f694da4ae10eb3e5db6cf98205#file-vimrc-L4-L13
 
 set nocompatible
+let mapleader=" "
 
 " ===== Display =====
 
@@ -65,6 +66,12 @@ set hlsearch  " highlight search results
 " when entering insert mode, remove search highlights
 autocmd InsertEnter * set nohls
 
+" Telescope
+if has('nvim')
+  nnoremap <leader>b <cmd>Telescope file_browser<cr>
+  nnoremap <leader>f <cmd>Telescope live_grep<cr>
+endif
+
 
 " ===== Utils =====
 
@@ -77,6 +84,14 @@ set confirm
 " disable beeps and bells
 set visualbell
 set t_vb=
+
+" Terminal
+if has('nvim')
+  autocmd TermOpen * startinsert
+  nnoremap <leader>t :vs +te<cr>
+else
+  nnoremap <leader>t :vert term<cr>
+endif
 
 
 " ===== Buffers, tabs, windows =====
@@ -97,15 +112,16 @@ nnoremap <Esc>7 7gt
 nnoremap <Esc>8 8gt
 nnoremap <Esc>9 9gt
 
+
 " ===== Theme & colors =====
 
 colorscheme codedark
 
-hi Search ctermbg=gray ctermfg=black
+hi Search ctermbg=gray ctermfg=black guibg=gray guifg=black
 
 " unset background colours (uses transparency if available)
-hi Normal ctermbg=NONE
-hi EndOfBuffer ctermbg=NONE
+hi Normal ctermbg=NONE guibg=NONE
+hi EndOfBuffer ctermbg=NONE guibg=NONE
 
 
 " ===== Autocompletion =====
@@ -120,8 +136,10 @@ hi EndOfBuffer ctermbg=NONE
 set wildmenu  " vim command autocompletion and suggestions (using tab)
 
 " autocomplete list options
-set completeopt=longest,menuone,popuphidden
-set completepopup=highlight:Pmenu,border:off
+if !has("nvim")
+  set completeopt=longest,menuone,popuphidden
+  set completepopup=highlight:Pmenu,border:off
+endif
 
 " ----- coc.nvim -----
 
@@ -145,7 +163,11 @@ function! CheckBackspace() abort
 endfunction
 
 " use ctrl+space to force trigger completion (like vscode)
-inoremap <silent><expr> <c-@> coc#refresh()
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " highlight the symbol and its references when holding cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -224,7 +246,7 @@ autocmd FileType c,cpp,java set formatoptions+=ro
 autocmd FileType c,cpp set comments=sl:/*,mb:**,ex:*/"
 
 " two space indentation for some files
-autocmd FileType vim,lua,yaml set shiftwidth=2 softtabstop=2
+autocmd FileType vim,lua,yaml,nix set shiftwidth=2 softtabstop=2
 
 " ensure normal tabs in assembly files
 " and set to NASM syntax highlighting

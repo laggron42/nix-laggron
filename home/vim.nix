@@ -5,12 +5,16 @@
     nodejs
   ];
 
+
   programs.vim = {
     enable = true;
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
+      # themes
       vim-code-dark
       vim-airline
+
+      # LSP
       coc-nvim
       coc-sh
       coc-clangd
@@ -18,6 +22,8 @@
       coc-json
       coc-vimlsp
       coc-pyright
+
+      # tools
       DoxygenToolkit-vim
     ];
     extraConfig = builtins.readFile(dotfiles/vimrc);

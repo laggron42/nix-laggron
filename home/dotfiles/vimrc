@@ -134,6 +134,8 @@ hi EndOfBuffer ctermbg=NONE guibg=NONE
 
 
 set wildmenu  " vim command autocompletion and suggestions (using tab)
+set wildmode=longest,full  " complete longest common string, then each full match
+set wildoptions=fuzzy  " remove default pum option (nvim), use fuzzy matching
 
 " autocomplete list options
 if !has("nvim")

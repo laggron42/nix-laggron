@@ -14,6 +14,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
+      extraConfig = "DISABLE_MAGIC_FUNCTIONS=true";
     };
 
     enableCompletion = true;

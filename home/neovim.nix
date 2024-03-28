@@ -12,10 +12,8 @@ in
     unstable.nixd  # LSP for nix files
     ripgrep  # fzf dependency for live_grep
 
-    # fonts
-    font-awesome_6
-    nerdfonts
-    material-symbols
+    # patched nerdfont to not include everything
+    (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 
   programs.neovim = {

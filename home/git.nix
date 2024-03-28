@@ -28,6 +28,7 @@
         followTags = true;
       };
       branch.autoSetupRebase = "always";
+      rerere.enabled = true;
     };
 
     aliases = {

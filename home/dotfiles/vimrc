@@ -258,3 +258,6 @@ autocmd FileType asm set noexpandtab shiftwidth=8 softtabstop=0 syntax=nasm
 autocmd FileType asm set syntax=asm68k
 autocmd FileType asm map <F6> :!a68k % -o%:r.hex -s -n -rmal<CR>
 autocmd FileType asm map <F7> :silent exec "!d68k %:r.hex &"<CR>
+
+" set CMake syntax highlighting
+au BufNewFile,BufRead *.cmake,CMakeLists.txt set filetype=cmake

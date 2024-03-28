@@ -22,6 +22,7 @@
       coc-json
       coc-vimlsp
       coc-pyright
+      coc-cmake
 
       # tools
       DoxygenToolkit-vim

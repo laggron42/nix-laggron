@@ -34,12 +34,11 @@
     };
   };
 
-  services = (if !pkgs.stdenv.isDarwin then {
-      gpg-agent = {
-        enable = true;
-        verbose = true;
-        enableSshSupport = true;
-      };
-    }
-  else {});
+  services = {
+    gpg-agent = {
+      enable = true;
+      verbose = true;
+      enableSshSupport = true;
+    };
+  };
 }

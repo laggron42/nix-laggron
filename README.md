@@ -19,4 +19,4 @@ for sharing user-specific settings.
 1. Install [home-manager](https://github.com/nix-community/home-manager) without using module-based
    install
 2. Download this repository
-3. Run `home-manager -f path/to/nix-laggron`
+3. Run `home-manager switch --flake path/to/nix-laggron`

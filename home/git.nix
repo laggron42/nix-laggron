@@ -16,6 +16,11 @@
     userName = "Auguste Charpentier";
     userEmail = "laggron42@gmail.com";
 
+    ignores = [
+      ".DS_Store"
+      "*~"
+      "*.swp"
+    ];
     extraConfig = {
       commit.verbose = true;
       rebase = {

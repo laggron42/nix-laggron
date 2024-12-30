@@ -1,15 +1,11 @@
 { config, pkgs, lib, ... }:
 
 let
-  unstable = import
-    (builtins.fetchTarball https://github.com/nixos/nixpkgs/archive/master.tar.gz)
-    # reuse the current configuration
-    { config = { allowUnfree = true; }; };
   commonPlugins = (import ./vim.nix { inherit config pkgs; }).programs.vim.plugins;
 in
 {
   home.packages = with pkgs; [
-    unstable.nixd  # LSP for nix files
+    nixd  # LSP for nix files
     ripgrep  # fzf dependency for live_grep
 
     # patched nerdfont to not include everything

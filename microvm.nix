@@ -101,7 +101,11 @@ in {
             ];
           };
         };
-        users.users.root.password = "hai";
+        users.users.root = {
+          openssh.authorizedKeys = [
+            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC/3MWKug10bpDY6iJkKSXdb6Dd05LAwPNlUtc3XiAfekZ3Jjsgdap++XS1hL9VrbTr/sCc831GhOWj93tUVXTCgEeRtPiY6ZoWeUUNeD7Vxc6L41GiaWQYum6mnJ73MNVkzxAyAWFQ4g7yzTpYRJFk0IrBaVdl5AYcAr4HplU7D1WOC3gCerwQnvjwShjUOGYZ9XaXq3hOTylvI8Hp2kv7aq1gmgKrMC8P5wqXbrm5MzRMLMPU6+r4fqbSgqLICLh9VJbVpX5ipRFn+rJDw4lZHSv3j8Pz10my5RYbAsSGlcgWH22Wv8s9kKfdeX+1bWihmit/MC0UILXjI8HxH2IvYHm6IWLueMYv3JxxVmbnS7zeG04L68T7KVtl3MXbavpEvrjCFKrJvZn5jlOYiVktsQSXplWI4aYwVXrFDXt4v/H16bO5A5m1ajTdS4tGIFA5na65HKErugMPbJmcJ1kwVuP6hbDjPwiCL1g+ceRamn3y0xaUuG/F0+KIkoCFthwAjvV0KcSdfASVikIp10MPOCVqATcIIc31LdnWEcYJ14pX13jUD0Uo6nNbZUArKXRLipgwDbkbVpzPSCPFjV4TdmVB8EZEHVOclgavE6aqgeqQ6c/Ll+zh1eidezrj+GHOzy9YUQFLJVMOobuPcUBevWGQTFVmQA4RSQ/SJgLwQw== cardno:20_872_969"
+          ];
+        };
         services.openssh = {
           enable = true;
           settings.PermitRootLogin = "yes";
@@ -109,4 +113,5 @@ in {
       };
     };
   }) vms);
+
 }

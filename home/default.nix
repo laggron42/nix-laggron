@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "laggron";
-  home.homeDirectory = "/Users/laggron";
   home.stateVersion = "24.11";
 
   programs.home-manager = {
@@ -11,7 +9,7 @@
   };
 
   news.display = "silent";
-  systemd.user.startServices = "legacy";
+  systemd.user.startServices = "sd-switch";
 
   imports = [
     ./gnupg.nix

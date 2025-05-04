@@ -21,7 +21,7 @@ in {
           ];
           # Setup routes to the VM
           routes = [ {
-            Destination = "10.0.0.${toString i + 10}/32";
+            Destination = "10.0.0.${toString (i + 10)}/32";
           } {
             Destination = "fec0::${lib.toHexString i}/128";
           } ];

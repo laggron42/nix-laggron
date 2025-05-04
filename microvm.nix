@@ -48,11 +48,16 @@ in {
   in {
     name = name;
     value = {
+      flake = self;
+      updateFlake = "git+file:///etc/nixos";
+
       config = {
         system.stateVersion = "24.11";
         networking.hostName = name;
 
         microvm = {
+          vcpu = 2;
+          mem = 512;
           shares = [{
             source = "/nix/store";
             mountPoint = "/nix/.ro-store";

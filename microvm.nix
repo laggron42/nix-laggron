@@ -1,4 +1,4 @@
-{ self, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   vms = [
     "laggron"
@@ -48,9 +48,6 @@ in {
   in {
     name = name;
     value = {
-      flake = self;
-      updateFlake = "git+file:///etc/nixos";
-
       config = {
         system.stateVersion = "24.11";
         networking.hostName = name;

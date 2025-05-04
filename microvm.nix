@@ -101,7 +101,7 @@ in {
             ];
           };
         };
-        users.users.root.openssh.authorizedKeys.keyFiles = ["/root/.ssh/authorized_keys"];
+        users.users.root.openssh.authorizedKeys.keyFiles = [./authorized_keys];
         services.openssh = {
           enable = true;
           settings.PermitRootLogin = "yes";

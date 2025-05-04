@@ -1,13 +1,5 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }: {
 
-let
-  rootKeys = [
-    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC/3MWKug10bpDY6iJkKSXdb6Dd05LAwPNlUtc3XiAfekZ3Jjsgdap++XS1hL9VrbTr/sCc831GhOWj93tUVXTCgEeRtPiY6ZoWeUUNeD7Vxc6L41GiaWQYum6mnJ73MNVkzxAyAWFQ4g7yzTpYRJFk0IrBaVdl5AYcAr4HplU7D1WOC3gCerwQnvjwShjUOGYZ9XaXq3hOTylvI8Hp2kv7aq1gmgKrMC8P5wqXbrm5MzRMLMPU6+r4fqbSgqLICLh9VJbVpX5ipRFn+rJDw4lZHSv3j8Pz10my5RYbAsSGlcgWH22Wv8s9kKfdeX+1bWihmit/MC0UILXjI8HxH2IvYHm6IWLueMYv3JxxVmbnS7zeG04L68T7KVtl3MXbavpEvrjCFKrJvZn5jlOYiVktsQSXplWI4aYwVXrFDXt4v/H16bO5A5m1ajTdS4tGIFA5na65HKErugMPbJmcJ1kwVuP6hbDjPwiCL1g+ceRamn3y0xaUuG/F0+KIkoCFthwAjvV0KcSdfASVikIp10MPOCVqATcIIc31LdnWEcYJ14pX13jUD0Uo6nNbZUArKXRLipgwDbkbVpzPSCPFjV4TdmVB8EZEHVOclgavE6aqgeqQ6c/Ll+zh1eidezrj+GHOzy9YUQFLJVMOobuPcUBevWGQTFVmQA4RSQ/SJgLwQw== cardno:20_872_969"
-    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDg9TFF3CFBWLoEnLK8ZEaJXv64aqljo5xkalSoJbZLTRi8VGtia4Wo8Yccpz7UDilk2/0VRmdo/YPNEh4kfrjcyKu+C8Ry8EJUXLEftA98e4vZw+HqFaSJzr0O5InrVKnI7OE8tnhNvU9xdnRwyeUwg3zjgu/Rpn1Z69k/S4uNSMlLnHNnvGvU0IhyUfIQ4uHfSkyqlUpKFW4GQ9M73U5JpjXvZ7N4Vi9HKHEDt8MbxtaWmQuMaKIVKyuRF2+1QS1KyKyPnzjdeEPk787Y5v4SEuD68nysLvb0gmWob7TZDz5Q0PmpfoRyO2gPHSkegWiskbITOEjfZ+mG9W7/IoU5 preda@PredaMart"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFc6nuJ3ZrXvJBflDrxYgru4bKsM9PcNyGz+kGrd5WUc Kowlin"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHtv7d+4rAR8BLuVU0TIo8goCfW6pKKEl3gNgGymppH flare"
-  ];
-in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -32,12 +24,7 @@ in {
   # User settings goes here
   users.defaultUserShell = pkgs.zsh;
   users.users.root = {
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC/3MWKug10bpDY6iJkKSXdb6Dd05LAwPNlUtc3XiAfekZ3Jjsgdap++XS1hL9VrbTr/sCc831GhOWj93tUVXTCgEeRtPiY6ZoWeUUNeD7Vxc6L41GiaWQYum6mnJ73MNVkzxAyAWFQ4g7yzTpYRJFk0IrBaVdl5AYcAr4HplU7D1WOC3gCerwQnvjwShjUOGYZ9XaXq3hOTylvI8Hp2kv7aq1gmgKrMC8P5wqXbrm5MzRMLMPU6+r4fqbSgqLICLh9VJbVpX5ipRFn+rJDw4lZHSv3j8Pz10my5RYbAsSGlcgWH22Wv8s9kKfdeX+1bWihmit/MC0UILXjI8HxH2IvYHm6IWLueMYv3JxxVmbnS7zeG04L68T7KVtl3MXbavpEvrjCFKrJvZn5jlOYiVktsQSXplWI4aYwVXrFDXt4v/H16bO5A5m1ajTdS4tGIFA5na65HKErugMPbJmcJ1kwVuP6hbDjPwiCL1g+ceRamn3y0xaUuG/F0+KIkoCFthwAjvV0KcSdfASVikIp10MPOCVqATcIIc31LdnWEcYJ14pX13jUD0Uo6nNbZUArKXRLipgwDbkbVpzPSCPFjV4TdmVB8EZEHVOclgavE6aqgeqQ6c/Ll+zh1eidezrj+GHOzy9YUQFLJVMOobuPcUBevWGQTFVmQA4RSQ/SJgLwQw== cardno:20_872_969"
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDg9TFF3CFBWLoEnLK8ZEaJXv64aqljo5xkalSoJbZLTRi8VGtia4Wo8Yccpz7UDilk2/0VRmdo/YPNEh4kfrjcyKu+C8Ry8EJUXLEftA98e4vZw+HqFaSJzr0O5InrVKnI7OE8tnhNvU9xdnRwyeUwg3zjgu/Rpn1Z69k/S4uNSMlLnHNnvGvU0IhyUfIQ4uHfSkyqlUpKFW4GQ9M73U5JpjXvZ7N4Vi9HKHEDt8MbxtaWmQuMaKIVKyuRF2+1QS1KyKyPnzjdeEPk787Y5v4SEuD68nysLvb0gmWob7TZDz5Q0PmpfoRyO2gPHSkegWiskbITOEjfZ+mG9W7/IoU5 preda@PredaMart"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFc6nuJ3ZrXvJBflDrxYgru4bKsM9PcNyGz+kGrd5WUc Kowlin"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHtv7d+4rAR8BLuVU0TIo8goCfW6pKKEl3gNgGymppH flare"
-    ];
+    openssh.authorizedKeys.keyFiles = [./authorized_keys];
   };
 
   # Manage OpenSSH server
@@ -94,7 +81,7 @@ in {
   virtualisation.libvirtd.enable = true;
 
   users.users.patreon = {
-    openssh.authorizedKeys.keys = rootKeys;
+    openssh.authorizedKeys.keyFiles = [./authorized_keys];
     isNormalUser = true;
 
     # authorize access to hypervisor

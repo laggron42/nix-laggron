@@ -14,10 +14,7 @@
   networking.networkmanager.enable = true;
 
   # Enable flakes on the system
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    trusted-users = ["patreon"];
-  };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   programs.zsh.enable = true;
 
@@ -68,28 +65,10 @@
       filesystems = {
         root = "/";
         boot = "/boot";
-        "nix store" = "/nix/store";
       };
       memory.swap_pos = "below";
     };
   };
-
-  # ============================================
-  # Below this line are the settings for patreon bots and VMs
-
-  # Enable libvirt integration
-  virtualisation.libvirtd.enable = true;
-
-  users.users.patreon = {
-    openssh.authorizedKeys.keyFiles = [./authorized_keys];
-    isNormalUser = true;
-
-    # authorize access to hypervisor
-    extraGroups = [ "libvirtd" ];
-  };
-
-  # Bridge for VM networking
-  #networking.bridges.br0.interfaces = [ "enp41s0" ];
 
 
   # This option defines the first version of NixOS you have installed on this particular machine,

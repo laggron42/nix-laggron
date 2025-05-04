@@ -42,13 +42,12 @@
       modules = [
         microvm.nixosModules.host
         ./configuration.nix
-        ./microvm.nix
+        ./microvm
         ({ config, pkgs, options, ... }: { nix.registry.nixpkgs.flake = nixpkgs; })
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.root = ./root.nix;
-          home-manager.users.patreon = ./patreon.nix;
           home-manager.sharedModules = [./home];
         }
       ];

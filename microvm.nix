@@ -73,7 +73,7 @@ in {
           matchConfig.MACAddress = mac;
           # Static IP configuration
           address = [
-            "10.0.0.${toString i}/32"
+            "10.0.0.${toString (i + 10)}/32"
             "fec0::${lib.toHexString i}/128"
           ];
           routes = [ {

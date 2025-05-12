@@ -110,9 +110,9 @@
         command = "echo 'Ballsdex hosting' | ${pkgs.figlet}/bin/figlet | ${pkgs.lolcat}/bin/lolcat -f";
         color = "white";
       };
-      service_status = {
+      #service_status = {
         # TODO: Ballsdex bot service
-      };
+      #};
       uptime.prefix = "Uptime:";
       memory.swap_pos = "below";
     };

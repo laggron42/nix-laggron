@@ -39,8 +39,8 @@
     vim
     wget
     git
-
-    terraform
+    htop
+    file
   ];
 
   # Open ports in the firewall.

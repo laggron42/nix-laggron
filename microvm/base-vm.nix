@@ -5,6 +5,9 @@
 
   # VM hardware settings
   microvm = {
+
+    # connect to machine without network
+    vsock.cid = 1200 + i;
     
     # this should be enough for most bots, may be increased
     vcpu = 2;
@@ -81,6 +84,12 @@
       PermitRootLogin = "without-password";
       PasswordAuthentication = false;
     };
+  };
+
+  systemd.sockets.sshd = {
+    socketConfig.ListenStream = [
+      "vsock:${toString (1200 + i)}:22"
+    ];
   };
 
   # enable flakes for the "nix profile" command

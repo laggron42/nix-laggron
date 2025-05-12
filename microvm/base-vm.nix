@@ -5,9 +5,6 @@
 
   # VM hardware settings
   microvm = {
-
-    # connect to machine without network
-    vsock.cid = 1200 + i;
     
     # this should be enough for most bots, may be increased
     vcpu = 2;
@@ -30,6 +27,9 @@
     }];
 
   };
+
+  # Switch instead of restart when updating
+  system.switch.enable = true;
 
   # enables networking on the VM
   networking.useNetworkd = true;
@@ -84,12 +84,6 @@
       PermitRootLogin = "without-password";
       PasswordAuthentication = false;
     };
-  };
-
-  systemd.sockets.sshd = {
-    socketConfig.ListenStream = [
-      "vsock:${toString (1200 + i)}:22"
-    ];
   };
 
   # enable flakes for the "nix profile" command

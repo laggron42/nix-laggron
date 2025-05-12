@@ -4,7 +4,7 @@
   home.username = "root";
   home.homeDirectory = "/root";
 
-  programs.ssh.matchBlocks."10.0.*.*" = {
+  programs.ssh.matchBlocks."10.0.*.*".extraOptions = {
     StrictHostkeyChecking = "no";
     UserKnownHostsFile = "/dev/null";
   };

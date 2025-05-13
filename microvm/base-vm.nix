@@ -136,15 +136,13 @@ in
   users.users.root.openssh.authorizedKeys.keyFiles = [../authorized_keys];
 
   users.users.${name} = {
-    linger = true;
+    #linger = true;
     isNormalUser = true;
   };
 
   home-manager.users.${name} = { pkgs, ...}: {
 
     systemd.user = {
-      enable = true;
-
       services = {
         bdex-bot = {
           Unit = {

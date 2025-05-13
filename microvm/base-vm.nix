@@ -1,6 +1,16 @@
-{ lib, pkgs, name, mac, i }: {
+{ lib, pkgs, name, mac, i, ballsdex }:
+let
+  stateVersion = "24.11";
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/release-${stateVersion}.tar.gz";
+    sha256 = "1vf41h2362jk6qxih57wx779i1sqmd98j49cw5z6mhxs429apzhg";
+  };
+in
+{
 
-  system.stateVersion = "24.11";
+  imports = [ (import "${home-manager}/nixos") ];
+
+  system.stateVersion = stateVersion;
   networking.hostName = name;
 
   # VM hardware settings
@@ -103,6 +113,7 @@
     vim
     git
     nano
+    ballsdex
   ];
 
   # MOTD displayed on SSH logon
@@ -123,4 +134,40 @@
 
   # copy the SSH keys from the local root
   users.users.root.openssh.authorizedKeys.keyFiles = [../authorized_keys];
+
+  users.users.${name} = {
+    linger = true;
+    isNormalUser = true;
+  };
+
+  home-manager.users.${name} = { pkgs, ...}: {
+
+    systemd.user = {
+      enable = true;
+
+      services = {
+        bdex-bot = {
+          Unit = {
+            Description = "Ballsdex Discord bot service";
+            After = [ "network.target" ];
+          };
+          Service = {
+            Type = "simple";
+            WorkingDirectory = "~/Ballsdex";
+            ExecStart = "${ballsdex}/bin/ballsdex";
+          };
+        };
+      };
+    };
+
+    home.stateVersion = stateVersion;
+  };
+
+  # Clone Ballsdex
+  system.activationScripts = {
+    ballsdex.text = ''
+      DEST=/home/${name}/Ballsdex
+      [ ! -d $DEST ] && git clone https://github.com/Ballsdex-Team/BallsDex-DiscordBot.git $DEST
+    '';
+  };
 }

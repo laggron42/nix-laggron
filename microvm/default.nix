@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ballsdex, ... }: {
 
   imports = [
     ./network.nix
@@ -17,6 +17,7 @@
         name = name;
         mac = mac;
         i = i;
+        ballsdex = ballsdex;
       };
     };
   }) (import ./vm-list.nix));

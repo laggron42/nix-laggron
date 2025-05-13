@@ -12,9 +12,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     deploy-rs.url = "github:serokell/deploy-rs";
+
+    ballsdex = {
+      url = "github:Ballsdex-Team/BallsDex-DiscordBot?ref=3.0/uv-migration";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, microvm, deploy-rs, ... } @ inputs: let
+  outputs = { self, nixpkgs, home-manager, microvm, deploy-rs, ballsdex, ... } @ inputs: let
     inherit (self) outputs;
     systems = [
       "aarch64-linux"
@@ -43,6 +48,9 @@
         microvm.nixosModules.host
         ./configuration.nix
         ./microvm
+        {
+          _module.args = { ballsdex = ballsdex; };
+        }
         ({ config, pkgs, options, ... }: { nix.registry.nixpkgs.flake = nixpkgs; })
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

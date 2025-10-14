@@ -181,11 +181,18 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " shortcuts
 
-nmap <F2> <Plug>(coc-rename)  " rename current symbol
+" rename current symbol
+nnoremap <F2> <Plug>(coc-rename)
 
 " format selected code
-xmap <F4>  <Plug>(coc-format-selected)
-nmap <F4>  <Plug>(coc-format-selected)
+xnoremap <F4> <Plug>(coc-format-selected)
+nnoremap <F4> <Plug>(coc-format-selected)
+
+" goto code navigation
+nnoremap <silent><nowait> gd <Plug>(coc-definition)
+nnoremap <silent><nowait> gy <Plug>(coc-type-definition)
+nnoremap <silent><nowait> gr <Plug>(coc-references)
+nnoremap <silent><nowait> gi <Plug>(coc-implementations)
 
 " use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>

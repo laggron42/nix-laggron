@@ -9,8 +9,10 @@
   programs = {
     ssh = {
       enable = true;
-      forwardAgent = true;
       matchBlocks = {
+        "*" = {
+          forwardAgent = true;
+        };
         "ssh.cri.epita.fr" = {
           extraOptions = {
             GSSAPIAuthentication = "yes";

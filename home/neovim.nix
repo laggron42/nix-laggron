@@ -8,8 +8,7 @@ in
     nixd  # LSP for nix files
     ripgrep  # fzf dependency for live_grep
 
-    # patched nerdfont to not include everything
-    (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
+    nerd-fonts.hack
   ];
 
   programs.neovim = {

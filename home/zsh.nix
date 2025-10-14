@@ -13,7 +13,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "docker" "docker-compose" ];
+      plugins = [ "docker" "docker-compose" ];
       extraConfig = "DISABLE_MAGIC_FUNCTIONS=true";
     };
 

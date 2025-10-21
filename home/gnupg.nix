@@ -6,6 +6,10 @@
     yubikey-manager
   ];
 
+  home.sessionVariablesExtra = ''
+    unset SSH_AUTH_SOCK
+  '';
+
   programs = {
     ssh = {
       enable = true;

@@ -17,6 +17,9 @@ in {
     backend = "glx";
     settings = {
       "corner-radius" = 10;
+      #"opacity-rule" = [
+      #  "30:class_g = 'i3lock'"
+      #];
     };
   };
 }

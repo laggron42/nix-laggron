@@ -34,6 +34,7 @@
       };
       branch.autoSetupRebase = "always";
       rerere.enabled = true;
+      core.sshCommand = "${config.programs.ssh.package}/bin/ssh";
     };
 
     aliases = {

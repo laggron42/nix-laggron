@@ -13,6 +13,7 @@
   programs = {
     ssh = {
       enable = true;
+      package = pkgs.opensshWithKerberos;
       matchBlocks = {
         "*" = {
           forwardAgent = true;
@@ -45,6 +46,7 @@
       enable = true;
       verbose = true;
       enableSshSupport = true;
+      enableExtraSocket = true;
     };
   };
 }
